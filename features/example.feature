@@ -1,7 +1,8 @@
 @wip @S-12345
 Feature:
 
-  *An Example Feature
+  An Example Feature
+  ========
 
   Feature descriptions can contain _markdown_. [Links are fine](http://versionone.com) as are images:
 
