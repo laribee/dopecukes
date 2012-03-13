@@ -1,12 +1,17 @@
 app = require('express').createServer()
-parser = require('./dopecukes/report_parser')
 path = require('path')
+parser = require('./dopecukes/report_parser')
+format = require('./dopecukes/formatter')
 
-app.get '/', (req, res) ->
+app.get '/', (request, response) ->
+
   jsonFile = path.join(process.cwd(), 'report.json')
   console.log("reading cucumber report from #{jsonFile}")
-  parser(jsonFile, (json) -> res.send(json))
+
+  parser jsonFile, (json) -> response.send(format(json))
+
 
 module.exports.start = (port) ->
+
   console.log("starting server at http://0.0.0.0:#{port}")
   app.listen(port)
