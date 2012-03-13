@@ -1,0 +1,16 @@
+{
+  "author": "David Laribee <laribee@gmail.com>",
+  "name": "dopecukes",
+  "description": "A pretty, fast tool for turning your cucumber features into living documentation.",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/laribee/dopecukes.git"
+  },
+  "engines": {
+    "node": "~0.6.11"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {}
+}
