@@ -15,7 +15,7 @@ formatScenario = (scenario) =>
   @output += "</ul>"
 
 formatStep = (step) =>
-  @output += "<li class='#{step.result.status}'>#{step.keyword + step.name}</li>"
+  @output += "<li class='#{step?.result?.status}'>#{step?.keyword + step?.name}</li>"
 
 formatTags =  (tags) =>
   @output += "<div class='tags'>"
