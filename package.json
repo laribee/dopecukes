@@ -1,8 +1,8 @@
 {
   "author": "David Laribee <laribee@gmail.com> (http://laribee.com)",
   "name": "dopecukes",
-  "description": "A pretty, fast tool for turning your cucumber features into living documentation.",
-  "version": "0.0.5",
+  "description": "A speedy tool for generating pretty, living documentation from your cucumber features.",
+  "version": "0.0.7",
   "repository": {
     "type": "git",
     "url": "git://github.com/laribee/dopecukes.git"
