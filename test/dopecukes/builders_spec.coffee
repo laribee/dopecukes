@@ -28,11 +28,6 @@ describe "FeatureBuilder", ->
   it "includes id", ->
     @featureModel.id.should.eql('a-random-feature')
 
-describe "mock test", ->
-
-  it "works", ->
-
-
 describe "BackgroundBuilder", ->
 
   it "processes all steps", ->
