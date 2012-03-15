@@ -20,7 +20,7 @@ describe "FeatureBuilder", ->
     @featureModel.description.should.eql("Markdown <i>description</i>")
 
   it "creates folders from the uri", ->
-#    @featureModel.folders.should.eql(['one', 'two'])
+    @featureModel.folders.should.eql(['one', 'two'])
 
   it "includes a list of tags", ->
     @featureModel.tags.should.eql(['@wip', '@dope'])
