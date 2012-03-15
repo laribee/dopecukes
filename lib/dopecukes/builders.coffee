@@ -32,11 +32,10 @@ module.exports.FeatureBuilder = class FeatureBuilder
 
 module.exports.BackgroundBuilder = class BackgroundBuilder
 
-  constructor: (@stepBuilder = new StepBuilder) ->
-
-  toModel: (background) ->
+  toModel: (background, stepBuilder) ->
+    return unless (background.type == 'background')
     steps = []
-    steps.push(@stepBuilder.toModel(step)) for step in background.steps?
+    steps.push(stepBuilder.toModel(step)) for step in background.steps
     steps
 
 

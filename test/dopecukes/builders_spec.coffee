@@ -31,11 +31,28 @@ describe "FeatureBuilder", ->
 describe "BackgroundBuilder", ->
 
   it "processes all steps", ->
-    stepBuilder = { toModel: (step) ->  }
-    sinon.mock(stepBuilder).expects("toModel").exactly(1)
 
-    new builders.BackgroundBuilder(stepBuilder).toModel({ steps: [{}, {}] })
-    stepBuilder.toModel.verify
+    stepBuilder = new builders.StepBuilder
+    mock = sinon.mock(stepBuilder)
+    mock.expects('toModel').twice()
+
+    backgroundBuilder = new builders.BackgroundBuilder
+    backgroundBuilder.toModel({ type: "background", steps: [{}, {}] }, stepBuilder)
+
+    mock.verify()
+
+  it "will not process a non-background", ->
+
+    stepBuilder = new builders.StepBuilder
+    mock = sinon.mock(stepBuilder)
+    mock.expects('toModel').never()
+
+    console.log(new builders.BackgroundBuilder)
+
+    backgroundBuilder = new builders.BackgroundBuilder
+    backgroundBuilder.toModel({ type: "scenario", steps: [{}, {}] }, stepBuilder)
+
+    mock.verify()
 
 describe "StepBuilder", ->
   before ->
