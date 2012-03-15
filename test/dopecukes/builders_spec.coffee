@@ -52,7 +52,7 @@ describe "BackgroundBuilder", ->
     backgroundBuilder = new builders.BackgroundBuilder
     backgroundBuilder.toModel({ type: "scenario", steps: [{}, {}] }, stepBuilder)
 
-    stepBuilder.toModel.verify()
+    mock.verify()
 
 describe "StepBuilder", ->
   before ->
