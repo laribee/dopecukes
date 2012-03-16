@@ -23,14 +23,21 @@ formatBackground = (background) =>
   @output += "<h2>Background</h2>"
   formatTags(background.tags) if background.tags?
   @output += "<ul class='steps'>"
-  formatStep(step) for step in background.steps
+  formatStep(step) for step in background.steps?
   @output += "</ul>"
 
 formatScenario = (scenario) =>
-  @output += "<h2>#{scenario.name}</h2>"
-  formatTags(scenario.tags) if scenario.tags?
+    @output += "<h2>#{scenario.name}</h2>"
+    formatTags(scenario.tags) if scenario.tags?
+    @output += "<ul class='steps'>"
+    formatStep(step) for step in scenario.steps?
+    @output += "</ul>"
+
+formatScenario = (scenario_outline) =>
+  @output += "<h2>#{scenario_outline.name}</h2>"
+  formatTags(scenario_outline.tags) if scenario_outline.tags?
   @output += "<ul class='steps'>"
-  formatStep(step) for step in scenario.steps
+  formatStep(step) for step in scenario_outline.steps?
   @output += "</ul>"
 
 formatStep = (step) =>
