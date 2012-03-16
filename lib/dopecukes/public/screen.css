@@ -2,9 +2,27 @@ body {
   font-family: helvetica;
 }
 
+section.description, ul.steps {
+  clear: both;
+}
+
+ul.tags {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+li.tag {
+  float: left;
+  margin-right: 10px;
+  padding: 3px;
+  background-color: #CCFFCC;
+  font-weight: bold;
+}
+
 ul.steps {
   list-style-type: none;
   list-style-position: outside;
+  padding-left: 0px;
 }
 
 li.step {
