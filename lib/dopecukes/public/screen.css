@@ -1,0 +1,12 @@
+body {
+  font-family: helvetica;
+}
+
+ul.steps {
+  list-style-type: none;
+  list-style-position: outside;
+}
+
+li.step {
+
+}

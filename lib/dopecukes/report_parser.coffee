@@ -1,7 +1,5 @@
 fs = require('fs')
 
-module.exports = (jsonFile, callback) ->
-  fs.readFile jsonFile, (err, data) ->
-    json = JSON.parse(data)
-    callback(json)
-
+module.exports = (jsonFile) ->
+  data = fs.readFileSync(jsonFile)
+  JSON.parse(data)
