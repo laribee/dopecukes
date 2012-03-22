@@ -5,28 +5,46 @@ sinon = require('sinon')
 describe "FeatureBuilder", ->
 
   before ->
-    cucumberFeature = {
+
+    @cucumberFeature = {
       name: 'A Random Feature',
       id: 'a-random-feature',
       uri: "features\\one\\two\\three.feature",
       desc: "Markdown *description*",
       tags: [{name:'@wip'}, {name:'@dope'}]
     }
+
     markdownStub = sinon.stub()
     markdownStub.returns("Markdown <i>description</i>")
-    @featureModel = new builders.FeatureBuilder(markdownStub).toModel(cucumberFeature)
 
-  it "transforms markdown in description", ->
-    @featureModel.description.should.eql("Markdown <i>description</i>")
+    @featureBuilder = new builders.FeatureBuilder(markdownStub)
 
-  it "creates folders from the uri", ->
-    @featureModel.folders.should.eql(['one', 'two'])
+    describe "basic mappings", ->
 
-  it "includes a list of tags", ->
-    @featureModel.tags.should.eql(['@wip', '@dope'])
+      before ->
+        @featureModel = @featureBuilder.toModel(@cucumberFeature)
 
-  it "includes id", ->
-    @featureModel.id.should.eql('a-random-feature')
+      it "transforms markdown in description", ->
+        @featureModel.description.should.eql("Markdown <i>description</i>")
+
+      it "creates folders from the uri", ->
+        @featureModel.folders.should.eql(['one', 'two'])
+
+      it "includes a list of tags", ->
+        @featureModel.tags.should.eql(['@wip', '@dope'])
+
+      it "includes id", ->
+        @featureModel.id.should.eql('a-random-feature')
+
+    describe "dealing with children", ->
+
+      before ->
+        @cucumberFeature.elements = [
+          { type: 'background'},
+          { type: 'scenario'}
+        ]
+        @featureModel = @featureBuilder.toModel(@cucumberFeature)
+
 
 describe "BackgroundBuilder", ->
 
@@ -46,8 +64,6 @@ describe "BackgroundBuilder", ->
     stepBuilder = new builders.StepBuilder
     mock = sinon.mock(stepBuilder)
     mock.expects('toModel').never()
-
-    console.log(new builders.BackgroundBuilder)
 
     backgroundBuilder = new builders.BackgroundBuilder
     backgroundBuilder.toModel({ type: "scenario", steps: [{}, {}] }, stepBuilder)
