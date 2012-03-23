@@ -3,6 +3,7 @@ util = require("util")
 _ = require("underscore")
 
 output = ""
+backgroundSteps = 0
 
 formatFeature = (feature) =>
   @output += "<article class='feature'>"
@@ -11,10 +12,11 @@ formatFeature = (feature) =>
   @output += "<section class='description'>#{md(feature.description)}</section>"
   formatFeatureElement(element) for element in feature.elements
   @output += "</article>"
+  @backgroundSteps = 0
 
-formatFeatureElement = (element) => 
+formatFeatureElement = (element) =>
   elementType = element.type
-  @output += "<section class='#{elementType}'>"
+  @output += "<section class='#{elementType} #{figureOutStatus(element)}'>"
   formatBackground(element) if elementType == "background"
   formatScenario(element) if elementType == "scenario"
   formatScenarioOutline(element) if elementType == "scenario_outline"
@@ -24,14 +26,21 @@ formatBackground = (background) =>
   @output += "<h2>Background</h2>"
   formatTags(background.tags) if background.tags?
   @output += "<ul class='steps'>"
-  formatStep(step) for step in background.steps
+  formatBackgroundStep(step) for step in background.steps
   @output += "</ul>"
+
+figureOutStatus = (scenario) ->
+  statuses = _.map(scenario.steps, (step) -> step?.result?.status)
+  reduction = (memo, status) ->
+    return memo if memo != 'passed'
+    memo = status
+  status = _.reduce(statuses, reduction, 'passed')
 
 formatScenario = (scenario) =>
     @output += "<h2>#{scenario.name}</h2>"
     formatTags(scenario.tags) if scenario.tags?
     @output += "<ul class='steps'>"
-    formatStep(step) for step in scenario.steps
+    formatStep(step) for step in scenario.steps[(@backgroundSteps)..scenario.length]
     @output += "</ul>"
 
 formatScenarioOutline = (scenario_outline) =>
@@ -41,13 +50,17 @@ formatScenarioOutline = (scenario_outline) =>
   formatStep(step) for step in scenario_outline.steps
   @output += "</ul>"
 
+formatBackgroundStep = (step) =>
+  formatStep(step)
+  @backgroundSteps += 1
+
 formatStep = (step) =>
   @output += "<li class='step #{step?.result?.status}'>#{step?.keyword + step?.name}</li>"
   formatTable(step.rows) if step.rows?
 
 formatTable = (rows) =>
   @output += "<li class='step'>"
-  @output += "<table class='step-data'>"
+  @output += "<table class='step-data' cellpadding='0' cellspacing='0'>"
   formatTableRow(row) for row in rows
   @output += "</table>"
   @output += "<li>"
