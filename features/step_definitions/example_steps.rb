@@ -9,7 +9,7 @@ Then /^I look gooooooood$/ do
 end
 
 When /^I take one step forward$/ do
-  1.should == 2
+  :symbol.should == :symbol
 end
 
 Then /^I take two steps back$/ do

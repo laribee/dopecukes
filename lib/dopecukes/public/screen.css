@@ -87,10 +87,6 @@ section .passed h2 {
   background-image: url(tick.png);
 }
 
-section .passed li.step {
-  color: #8CC63F;
-}
-
 section .failed {
   border-color: #FF1D25;
 }
@@ -99,10 +95,6 @@ section .failed h2 {
   color: #FF1D25;
   background-color: #FFEBEB;
   background-image: url(fail.png);
-}
-
-section .failed li.step {
-  color: #FF1D25;
 }
 
 section .undefined {
@@ -115,6 +107,18 @@ section .undefined h2 {
 
 section li.step table {
   color: #333;
+}
+
+section li.step.passed {
+  color: #8CC63F;
+}
+
+section li.step.failed {
+  color: #FF1D25;
+}
+
+section li.step.undefined {
+
 }
 
 table.step-data {
