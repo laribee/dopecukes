@@ -49,11 +49,15 @@ ul.steps {
   margin: 4px 0;
 }
 
+li.step {
+  line-height: 1.6em;
+}
+
 ul.tags {
   list-style-type: none;
-  padding-left: 0px;
-  /* margin-bottom: 55px; */
-  /* margin-top: -5px; */
+  margin: 0px;
+  padding: 0px;
+  padding-bottom: 20px;
 }
 
 li.tag {
@@ -70,13 +74,13 @@ ul.steps {
   padding-left: 0px;
 }
 
-section.description, section.background, section.scenario, section.scenario_outline {
+section.background, section.scenario, section.scenario_outline {
   border-left: 4px #E6E6E6 solid;
   padding-left: 4px;
 }
 
 article.feature section ul.tags {
-  padding-bottom: 14px;
+  padding-bottom: 23px;
 }
 
 section h2 {

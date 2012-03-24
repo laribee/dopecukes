@@ -6,9 +6,9 @@ output = ""
 backgroundSteps = 0
 
 formatFeature = (feature) =>
-  formatTags(feature.tags) if feature.tags?
   @output += "<article class='feature'>"
   @output += "<h1 class='name'>#{feature.name}</h1>"
+  formatTags(feature.tags) if feature.tags?
   @output += "<section class='description'>#{md(feature.description)}</section>"
   formatFeatureElement(element) for element in feature.elements
   @output += "</article>"
@@ -17,7 +17,6 @@ formatFeature = (feature) =>
 formatFeatureElement = (element) =>
   elementType = element.type
   @output += "<section class='#{elementType} #{rollStatusUp(element)}'>"
-  formatTags(element.tags) if element.tags?
   formatBackground(element) if elementType == "background"
   formatScenario(element) if elementType == "scenario"
   formatScenarioOutline(element) if elementType == "scenario_outline"
@@ -25,6 +24,7 @@ formatFeatureElement = (element) =>
 
 formatBackground = (background) =>
   @output += "<h2>Background</h2>"
+  formatTags(background.tags) if background.tags?
   @output += "<ul class='steps'>"
   formatBackgroundStep(step) for step in background.steps
   @output += "</ul>"
@@ -37,13 +37,15 @@ rollStatusUp = (scenario) ->
   status = _.reduce(statuses, reduction, 'passed')
 
 formatScenario = (scenario) =>
-    @output += "<h2>#{scenario.name}</h2>"
-    @output += "<ul class='steps'>"
-    formatStep(step) for step in scenario.steps[(@backgroundSteps)..scenario.length]
-    @output += "</ul>"
+  @output += "<h2>#{scenario.name}</h2>"
+  formatTags(scenario.tags) if scenario.tags?
+  @output += "<ul class='steps'>"
+  formatStep(step) for step in scenario.steps[(@backgroundSteps)..scenario.length]
+  @output += "</ul>"
 
 formatScenarioOutline = (scenario_outline) =>
   @output += "<h2>#{scenario_outline.name}</h2>"
+  formatTags(scenario_outline.tags) if scenario_outline.tags?
   @output += "<ul class='steps'>"
   formatStep(step) for step in scenario_outline.steps
   @output += "</ul>"
