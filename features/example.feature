@@ -3,7 +3,7 @@ Feature: An Example Feature
 
   Now feature descriptions can contain _markdown_. [Links are fine](http://versionone.com) as are images:
 
-  ![SteveSteve BuscemiBuscemi](http://i.imgur.com/UjRML.jpg)
+  ![Trident Maple](http://farm1.static.flickr.com/111/293228717_7fbaffb99f.jpg)
 
   > The quick brown fox jumped
   > over the lazy dog.
