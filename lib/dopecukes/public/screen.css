@@ -11,6 +11,7 @@ body {
 .container {
   display: table;
   width: 960px;
+  margin: 0px auto;
 }
 
 nav {
@@ -23,6 +24,7 @@ section.features {
 }
 
 h1 {
+  clear: both;
   color: #2E5992;
   font-weight: normal;
   font-size: 24px;
@@ -30,6 +32,7 @@ h1 {
 }
 
 h2 {
+  clear: both;
   font-size: 18px;
   color: #808080;
   background-color: #E6E6E6;
@@ -49,7 +52,8 @@ ul.steps {
 ul.tags {
   list-style-type: none;
   padding-left: 0px;
-  margin-bottom: 55px;
+  /* margin-bottom: 55px; */
+  /* margin-top: -5px; */
 }
 
 li.tag {
@@ -69,6 +73,10 @@ ul.steps {
 section.description, section.background, section.scenario, section.scenario_outline {
   border-left: 4px #E6E6E6 solid;
   padding-left: 4px;
+}
+
+article.feature section ul.tags {
+  padding-bottom: 14px;
 }
 
 section h2 {

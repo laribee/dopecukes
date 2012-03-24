@@ -1,7 +1,7 @@
 @wip @S-12345
 Feature: An Example Feature
 
-  Now feature descriptions can contain _markdown_. [Links are fine](http://versionone.com) as are images:
+  Write feature descriptions in _markdown_. [Links are fine](http://versionone.com) as are images:
 
   ![Trident Maple](http://farm1.static.flickr.com/111/293228717_7fbaffb99f.jpg)
 
