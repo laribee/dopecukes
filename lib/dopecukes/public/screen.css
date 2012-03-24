@@ -66,11 +66,6 @@ ul.steps {
   padding-left: 0px;
 }
 
-li.step {
-
-}
-
-
 section.description, section.background, section.scenario, section.scenario_outline {
   border-left: 4px #E6E6E6 solid;
   padding-left: 4px;
